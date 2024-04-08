@@ -1,0 +1,4 @@
+# Ignorando entorno virtual
+/env
+
+.vscode/
