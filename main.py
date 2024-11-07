@@ -8,13 +8,13 @@ from tkinter import filedialog
 def load_data(file: str, file_type: str, delimiter=None) -> pd.DataFrame:
     if file_type == 'csv' or file_type == 'txt':
         try:
-            return pd.read_csv(file, delimiter=delimiter)
+            return pd.read_csv(file, delimiter=delimiter, encoding='latin1')
         except Exception as e:
             print(e)
             print('No se pudo leer el archivo con el delimitador especificado')
             return pd.read_csv(file, delimiter=delimiter, encoding='latin1')
     elif file_type == 'excel':
-        return pd.read_excel(file)
+        return pd.read_excel(file, dtype=str)
     else:
         raise ValueError('Tipo de archivo no soportado')
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     title = input('Ingresa el titulo del reporte: ')
     output_file = input('Ingresa la ruta donde quieres dejar el archivo: ')
 
-    default_output_file = r"G:\Mi unidad\Requerimientos_normativos_camilo\reqs"
+    default_output_file = r"G:\Mi unidad\Requerimientos_Demanda\Requerimientos"
 
     if not os.path.exists(output_file):
         output_file = default_output_file
